@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+    jupyter_dev :
+        image: jupyter_stream
+        build:
+            context: .
+            dockerfile: ./dockerfile
+        ports:
+            - 8765:8765
+            - 8701:8701
+            - 8702:8702
+            - 8703:8703
+            - 8704:8704
+            
+        command: "jupyter lab --port 8765 --ip=0.0.0.0 --allow-root --LabApp.token=''"
+        container_name: jupyter_stream
+        restart: always
+        working_dir: /mnt
